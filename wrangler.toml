@@ -1,4 +1,4 @@
-# wrangler.toml - Cloudflare Workers Configuration
+# wrangler.toml - Cloudflare Workers Configuration (Wrangler v4 Compatible)
 
 # Worker name (will be your subdomain: telegram-user-api.yourname.workers.dev)
 name = "telegram-user-api"
@@ -9,14 +9,11 @@ main = "worker.js"
 # Compatibility date - use latest features
 compatibility_date = "2025-11-30"
 
-# Your Cloudflare account ID (get it from Cloudflare dashboard)
-# account_id = "your_account_id_here"
+# Compatibility flags (if you need Node.js APIs, uncomment below)
+# compatibility_flags = ["nodejs_compat"]
 
 # Enable workers.dev subdomain for testing
 workers_dev = true
-
-# Node.js compatibility for better performance
-node_compat = false
 
 # Environment variables (non-sensitive)
 [vars]
@@ -27,7 +24,6 @@ ENABLE_CORS = "true"
 # For production environment
 [env.production]
 name = "telegram-user-api-prod"
-# vars for production
 [env.production.vars]
 API_VERSION = "3.0"
 ENABLE_LOGGING = "true"
@@ -46,17 +42,3 @@ name = "telegram-user-api-dev"
 [env.dev.vars]
 DEBUG = "true"
 VERBOSE_ERRORS = "true"
-
-# Build configuration
-[build]
-# command = "npm run build"  # If you need a build step
-# cwd = "./"
-# watch_dirs = ["src"]
-
-# Limits and performance
-# [limits]
-# cpu_ms = 50  # CPU time limit (milliseconds)
-
-# Observability (optional - for paid plans)
-# [observability]
-# enabled = true
